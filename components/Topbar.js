@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import {useState} from 'react'
-import { truncate } from 'prelude-ls';
+
 
 //Diseño de la barra de busqueda
 const Search = styled('div')(({ theme }) => ({
@@ -57,7 +57,7 @@ const Search = styled('div')(({ theme }) => ({
 export default function Topbar(){
 
     //Funcion para cambiar la posicion de los textos en la topbar dependiendo del tamaño de pantalla
-    const [screen, setScreen] = useState(null);
+    const [screen, setScreen] = useState(true);
 
     const size = () => typeof window !== "undefined" && window.addEventListener("resize", function() {
     if (window.matchMedia("(min-width: 600px)").matches) {

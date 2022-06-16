@@ -1,7 +1,14 @@
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
+import Image from 'next/image';
+import Typography from '@mui/material/Typography';
+import fstars from '../assets/img/Rating4.png';
+import fistars from '../assets/img/Rating5.png';
+import tstars from '../assets/img/Rating3.png';
+import { Container } from '@mui/material';
+import Filtros from './Filtros';
+import Organizar from './Organizar';
 
 
 export default function Carts(){
@@ -82,8 +89,14 @@ export default function Carts(){
 
     ]
 
+
     return(
         <div>
+            <Container>
+                <Filtros />
+                <Organizar />
+
+            </Container>
             <Grid container 
             rowSpacing={1} 
             justifyContent="center"
@@ -123,16 +136,39 @@ export default function Carts(){
                         </Box>
 
                         <Box>
-                            <h3 fontWeight="bold">
+                            
+                            <Typography variant="h6" component="p">
                                 {vendedor.nombre}
-                            </h3>
-    
-                            <p fontWeight="extrabold">
-                                {vendedor.ciudad}, Colombia
-                            </p>
-                            <h4>
+                                </Typography>
+                            
+                           
+                                <Typography variant="p" component="h5" color="#65B891">
+                                    {vendedor.ciudad}, Colombia
+                                </Typography>
+                            
+                                <Typography variant="p" component="h4" fontWeight="bold" >
                                 {vendedor.ventas} ventas
-                            </h4>
+                                </Typography>
+                           
+                            {vendedor.puntaje === 3 && <div>
+                                <Image src={tstars}
+                                alt="Landscape picture"
+                                layout="fixed"
+                                /> </div>
+                                }
+                            {vendedor.puntaje === 4 && <div>
+                                <Image src={fstars}
+                                alt="Landscape picture"
+                                layout="fixed"
+                                /> </div>
+                                }
+                            {vendedor.puntaje === 5 && <div>
+                                <Image src={fistars}
+                                alt="Landscape picture"
+                                layout="fixed"
+                                /> </div>
+                                }
+                             
                         </Box>
                     </Box>
 

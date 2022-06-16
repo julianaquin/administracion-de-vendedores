@@ -45,26 +45,25 @@ function ResponsiveDrawer(props) {
         margin:'auto', 
         padding:'10px' }}
       />
-      <Typography variant="h6" component="h6" 
+      <Typography variant="p" component="h3" 
       sx={{ 
+        fontWeight: 'bold',
         width: 100,
-        height: 70,
+        height: 50,
         margin:'auto', 
         textAlign:'center',
         lineHeight:1
          }}
-      > 
-      Nombre admin
+      >Nombre admin
       </Typography>
       </div>
       
       <Divider />
-      <List sx={{
-          left: 20
-      }}>
+      <List>
         {['Inicio', 'Productos', 'Vendedores', 'Compradores', 'Mensajes', 'Estadisticas'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={{
+              marginLeft: 3 }}>
               <ListItemIcon>
 
                 {index === 0 && <Home />}
@@ -81,11 +80,10 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       <Divider />
-      <List sx={{
-          left: 20
-      }}>
+      <List>
         <ListItem disablePadding>
-        <ListItemButton>
+        <ListItemButton sx={{
+              marginLeft: 3 }}>
               <ListItemIcon>
               <Settings />
                
@@ -143,7 +141,7 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
 
