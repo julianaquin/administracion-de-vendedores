@@ -21,6 +21,7 @@ import Settings from '@mui/icons-material/SettingsOutlined';
 import Avatar from '@mui/material/Avatar';
 import Toolbar from '@mui/material/Toolbar';
 import Topbar from './Topbar';
+import Carts from './Carts';
 import ImgAdmin from '/assets/img/admin.png'
 import { Typography } from '@mui/material';
 
@@ -145,6 +146,8 @@ function ResponsiveDrawer(props) {
         sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
+
+        <Carts />
 
       </Box>
     </Box>
