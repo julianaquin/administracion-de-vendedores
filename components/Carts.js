@@ -84,16 +84,41 @@ export default function Carts(){
 
     return(
         <div>
-            <Grid container >
+            <Grid container 
+            rowSpacing={1} 
+            justifyContent="center"
+            >
             {vendedores.map((vendedor, index) => (
-                <Grid item>
-                     <Box
-                    w="100%"
-                    alignItems="center"
-                    marginTop={4}
-                    marginBottom={3}
-                    >
-                    <Box>
+                <Grid item
+                xs={12} 
+                sm={6}
+                md={3}
+                lg={2.5}
+                key={index}
+                marginLeft={2}
+                marginRight={2}
+                marginTop={4}
+                marginBottom={3}
+                border="1px solid"
+                textAlign="center"
+                borderColor="#000"
+                sx={{
+                    backgroundColor: '#FFF',
+                    '&:hover': {
+                    backgroundColor: '#F5F5F5',
+                    opacity: [0.9, 0.9, 0.9]},
+                    borderRadius: 3,
+                    borderColor: '#F5F5F5'
+                }}
+                onClick={() => console.log("clicando el tipo de gasolina")}
+                >
+                    <Box
+                           w="100%"
+                            alignItems="center"
+                            marginTop={4}
+                            marginBottom={3}
+                        >
+                        <Box>
 
                         </Box>
 
@@ -109,11 +134,13 @@ export default function Carts(){
                                 {vendedor.ventas} ventas
                             </h4>
                         </Box>
-                 </Box>
+                    </Box>
 
+                    
                 </Grid>
             ))}
-            </Grid>
+
+        </Grid>
 
         </div>
     )
