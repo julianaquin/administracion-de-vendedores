@@ -65,95 +65,117 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function Carts(){
 
     //Arreglo de vendedores
+    //solo para visualizar, el final deberia tener el telefono, correo, fecha de inicio, ventas
     const vendedores = [
         {   id:1,
             nombre:"Daniel Bueno",
             ciudad:"Cali",
             ventas:230,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Daniel.png'
         },
         {
             id:2,
             nombre:"Pepito Perez",
             ciudad:"Medellín",
             ventas:402,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Pepito.png'
         },
         {   id:3,
             nombre:"Camila Gomez",
             ciudad:"Bogotá",
             ventas:135,
-            puntaje:5
+            puntaje:5,
+            imagen: '/Camila.png'
         },
         {
             id:4,
             nombre:"Jenny Osorio",
             ciudad:"Pereira",
             ventas:47,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Jenny.png'
         },
         {   id:5,
             nombre:"Pedro Piedra",
             ciudad:"Pasto",
             ventas:564,
-            puntaje:5
+            puntaje:5,
+            imagen: '/Pedro.png'
         },
         {   id:6,
             nombre:"Mauricio Hernandez",
             ciudad:"Tulua",
             ventas:60,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Mauricio.png'
         },
         {   id:7,
             nombre:"Oscar Lopez",
             ciudad:"Cali",
             ventas:118,
-            puntaje:3
+            puntaje:3,
+            imagen: '/Oscar.png'
         },
         {   id:8,
             nombre:"Luis Muñoz",
             ciudad:"Cali",
             ventas:1489,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Luis.png'
         },
         {   id:9,
             nombre:"Laura Valencia",
             ciudad:"Medellín",
             ventas:1743,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Laura.png'
         },
         {   id:10,
             nombre:"Ricardo Quintero",
             ciudad:"Bogotá",
             ventas:101,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Ricardo.png' 
         },
         {   id:11,
             nombre:"Maria José Zuluaga",
             ciudad:"Bogotá",
             ventas:15,
-            puntaje:4
+            puntaje:4,
+            imagen: '/MariaJose.png'
         },
         {   id:12,
             nombre:"Andrés Pinzon",
             ciudad:"Medellín",
             ventas:32,
-            puntaje:4
+            puntaje:4,
+            imagen: '/Andres.png'
         }
 
     ]
 
     //Modal
     const [open, setOpen] = React.useState(false);
+
+    //Id del vendedor
+    const [vendedorId, setVendedorId] = React.useState(null);
+
+    //Llena local storage
+    const [locals, setLocalS] = React.useState(false);
   
-    const handleClickOpen= () => {
+    //Cuando doy click guardo el id en el localStorage y abro el modal
+    const handleClickOpen= (id) => {
+        setLocalS(true);
         setOpen(true);
-        console.log('lo leyo' +'' + open);
+        setVendedorId(id);
+        localStorage.setItem("id", vendedorId);
+
         };
 
     const handleClose = () => {
       setOpen(false);
-      console.log('cierraaaa' + '' + open);
     };
 
     
@@ -190,23 +212,26 @@ export default function Carts(){
                     borderRadius: 3,
                     borderColor: '#F5F5F5'
                 }}
-                key={index}
-                onClick={handleClickOpen}
+                onClick={() => handleClickOpen(vendedor.id)}
                 >
-                        <Box
-                        w="100%"
-                        alignItems="center"
-                        marginTop={4}
-                        marginBottom={3}
+                    <Grid container
                     >
-                    <Box>
+                    <Grid item xs={3} marginLeft={1}>
+                    <Image src={vendedor.imagen}
+                            alt="vendedor picture"
+                            width="60"
+                            height="60"
+                            /> 
 
-                    </Box>
+                    </Grid>
 
-                    <Box
+                    <Grid item xs={7}
+                    marginLeft={1}
                     >
+
+                        <Box sx={{textAlign:'left'}}>
                         
-                        <Typography variant="h6" component="p">
+                        <Typography variant="p" fontSize="medium">
                             {vendedor.nombre}
                             </Typography>
                         
@@ -237,17 +262,31 @@ export default function Carts(){
                             layout="fixed"
                             /> </div>
                             }
-                    
+                         </Box>
                         
-                    </Box>
-                </Box>
+                    </Grid>
+                </Grid>
                     
                 </Grid>
             ))}
 
         </Grid>
-                        
-        <BootstrapDialog
+
+        {vendedores.forEach(function(e){
+                
+                if(e.id === vendedorId){
+                    console.log(e.id + '' + vendedorId + 'son iguales');
+                    localStorage.setItem("nombre", e.nombre);
+                    localStorage.setItem("ciudad", e.ciudad);
+                    localStorage.setItem("ventas", e.ventas);
+                    localStorage.setItem("puntaje", e.puntaje);
+                    localStorage.setItem("imagen", e.imagen)
+                }
+                 })
+        }
+        
+                {locals === true && 
+                <BootstrapDialog
                                 onClose={handleClose}
                                 aria-labelledby="customized-dialog-title"
                                 open={open}
@@ -259,40 +298,50 @@ export default function Carts(){
                                     Vendedor
                                 </BootstrapDialogTitle>
                                 <DialogContent dividers>
-                                <Box sx={{ flexGrow: 1 }}>
-                                    <Box sx={{  
-                                    marginLeft: 20,
+                                <Grid container sx={{ flexGrow: 1 }}>
+                                    <Grid item xs={4} sx={{  
+                                    marginLeft: 2,
                                     p:3
                                     }}>
-                                        <Typography gutterBottom>
-                                        Ricardo Quintero
-                                        </Typography>
 
-                                        <Typography>
-                                            Cali, Colombia
-                                        </Typography>
-
-                                        <Typography>
-                                        telefono,
-                                        correo@correo.com
-                                        </Typography>
-
-                                        <Typography>
-                                        Ventas totales:
-                                        <span>Ventas semanales, ventas diarias</span>
-                                        </Typography>
-                                     </Box>
-                                        <Box>
-                                        <Typography>
+                                        <Image src={localStorage.getItem("imagen")}
+                                        alt="vendedor picture"
+                                        width="60"
+                                        height="60"
+                                        /> 
+                                        <Typography sx={{fontSize:'small'}}>
                                         Fecha de inicio:
                                         <span>02/02/2022</span>
                                         </Typography>
-                                        <Typography>
+                                        <Typography sx={{fontSize:'small'}}>
                                         Categorias:
                                         <span>Tecnología, salud, belleza</span>
                                         </Typography>
-                                        </Box>
-                                    </Box>
+
+                                     </Grid>
+                                        <Grid item xs={7} >
+                                        <Typography gutterBottom>
+                                            {localStorage.getItem("nombre")}
+                                       
+                                        </Typography>
+
+                                        <Typography>
+                                        {localStorage.getItem("ciudad")}, Colombia
+                                        </Typography>
+
+                                        <Typography>
+                                        3165244532,
+                                        {localStorage.getItem("nombre")}@correo.com
+                                        </Typography>
+
+                                        <Typography>
+                                        Ventas totales: {localStorage.getItem("ventas")}
+                                        <span> 20 Ventas semanales, 2 ventas diarias</span>
+                                        </Typography>
+                                        
+                                        {localStorage.getItem("puntaje")}
+                                        </Grid>
+                                    </Grid>
                             
                                 </DialogContent>
                                 <DialogActions>
@@ -301,11 +350,10 @@ export default function Carts(){
                                     </Button>
                                 </DialogActions>
                                 </BootstrapDialog>
+                                }
+
 
 
         </div>
     )
 }
-
-
-

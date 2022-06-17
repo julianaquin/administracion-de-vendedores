@@ -22,7 +22,6 @@ import Avatar from '@mui/material/Avatar';
 import Toolbar from '@mui/material/Toolbar';
 import Topbar from './Topbar';
 import Carts from './Carts';
-import ImgAdmin from '/assets/img/admin.png'
 import { Typography } from '@mui/material';
 
 const drawerWidth = 240;
