@@ -311,35 +311,55 @@ export default function Carts(){
                                         /> 
                                         <Typography sx={{fontSize:'small'}}>
                                         Fecha de inicio:
-                                        <span>02/02/2022</span>
+                                        <Typography variant="p" component="h3">02/02/2022</Typography>
                                         </Typography>
+
                                         <Typography sx={{fontSize:'small'}}>
-                                        Categorias:
-                                        <span>Tecnología, salud, belleza</span>
+                                        <Typography variant="p" component="h4" sx={{pt:2}}>Categorias:</Typography>
+                                        Tecnología, salud, belleza
                                         </Typography>
 
                                      </Grid>
                                         <Grid item xs={7} >
-                                        <Typography gutterBottom>
+                                        <Typography gutterBottom variant="h5" component="p">
                                             {localStorage.getItem("nombre")}
                                        
                                         </Typography>
 
-                                        <Typography>
+                                        <Typography sx={{fontSize:'10', color:'#65B891'}}>
                                         {localStorage.getItem("ciudad")}, Colombia
                                         </Typography>
 
                                         <Typography>
-                                        3165244532,
+                                        <Typography> 3165244532</Typography>
                                         {localStorage.getItem("nombre")}@correo.com
                                         </Typography>
 
-                                        <Typography>
+                                        <Typography variant="p" component="h3" sx={{pt:2}}>
                                         Ventas totales: {localStorage.getItem("ventas")}
-                                        <span> 20 Ventas semanales, 2 ventas diarias</span>
+                                        <Typography>
+                                         20 Ventas semanales, 2 ventas diarias
+                                        </Typography>
+                                    
                                         </Typography>
                                         
-                                        {localStorage.getItem("puntaje")}
+                                        {localStorage.getItem("puntaje") == 3 &&
+                                        <Image src="/Rating3.png" 
+                                        width="107"
+                                        height="18"/>
+                                        }
+
+                                        {localStorage.getItem("puntaje") == 4 &&
+                                        <Image src="/Rating4.png" 
+                                        width="107"
+                                        height="18"/>
+                                        }
+
+                                        {localStorage.getItem("puntaje") == 5 &&
+                                        <Image src="/Rating5.png" 
+                                        width="107"
+                                        height="18"/>
+                                        }
                                         </Grid>
                                     </Grid>
                             
